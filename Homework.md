@@ -3,10 +3,6 @@
   - C:\post>docker run --name pdb -v back:/back -v main:/main -p 5432:5432 -e POSTGRES_PASSWORD=5566496 -d postgres
 880203a0518cbe816dbaadb2d74ff9b918b4b2cae1b4efbdd7f73a67ab899bfd
 
-  - C:\post>docker ps
-CONTAINER ID   IMAGE      COMMAND                  CREATED         STATUS         PORTS                    NAMES
-880203a0518c   postgres   "docker-entrypoint.s…"   4 seconds ago   Up 3 seconds   0.0.0.0:5432->5432/tcp   pdb
-
 
 2.
   - Create database test-db;
@@ -156,21 +152,6 @@ INSERT 0 5
 6.
 
   - docker exec -t pdb pg_dumpall -c -U postgres > back\dump.sql
-
-dir back
-
- Том в устройстве C не имеет метки.
- Серийный номер тома: E0F3-54D2
-
- Содержимое папки C:\post\back
-
-25.05.2022  14:43    <DIR>          .
-25.05.2022  14:43    <DIR>          ..
-25.05.2022  14:43            10 805 dump.sql
-               1 файлов         10 805 байт
-               2 папок  43 117 576 192 байт свободно
-
-
 
 - docker exec -i pdb2 psql -U postgres -d test-db -f back\dump.sql
    
